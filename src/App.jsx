@@ -54,7 +54,7 @@ function App() {
 
         <div className="avatar" style={{ padding: 0, overflow: "hidden" }}>
           <img
-            src="public/01852558135.jpg"
+            src="/01852558135.jpg"
             alt={person.name}
             style={{
               width: "100%",
@@ -80,7 +80,7 @@ function App() {
         <section className="card basic-card">
           <div className="info-box">
             <span className="icon">
-              <img src="public/blood-type-a.png" />
+              <img src="/blood-type-a.png" />
             </span>
             <span className="label">Blood Group</span>
             <strong>{person.bloodGroup}</strong>
@@ -88,7 +88,7 @@ function App() {
 
           <div className="info-box">
             <span className="icon">
-              <img src="public/mobileb.png" />
+              <img src="/mobileb.png" />
             </span>
             <span className="label">Phone</span>
             <strong>{person.phone}</strong>
@@ -115,7 +115,7 @@ function App() {
         <section className="card">
           <div className="section-title">
             <div className="title-icon">
-              <img src="public/emergency-call.png" />
+              <img src="/emergency-call.png" />
             </div>
 
             <div>
@@ -149,7 +149,7 @@ function App() {
                   className="call-button"
                   aria-label={`Call ${contact.name}`}
                 >
-                  <img src="public/mobile.png" />
+                  <img src="/mobile.png" />
                 </a>
               </div>
             ))}
