@@ -88,7 +88,7 @@ function App() {
 
           <div className="info-box">
             <span className="icon">
-              <img src="public/mobile.png" />
+              <img src="public/mobileb.png" />
             </span>
             <span className="label">Phone</span>
             <strong>{person.phone}</strong>
@@ -156,35 +156,6 @@ function App() {
           </div>
         </section>
 
-        {/* Medical Information */}
-        <section className="card">
-          <div className="section-title">
-            <div className="title-icon">🏥</div>
-
-            <div>
-              <h2>Medical Information</h2>
-              <p>Important information</p>
-            </div>
-          </div>
-
-          <div className="medical-info">
-            <div className="medical-item">
-              <span>Allergies</span>
-              <strong>{person.medical.allergies}</strong>
-            </div>
-
-            <div className="medical-item">
-              <span>Medical Conditions</span>
-              <strong>{person.medical.conditions}</strong>
-            </div>
-
-            <div className="medical-item">
-              <span>Medications</span>
-              <strong>{person.medical.medications}</strong>
-            </div>
-          </div>
-        </section>
-
         {/* Important Note */}
         <section className="warning">
           <div className="warning-icon">⚠️</div>
@@ -197,7 +168,7 @@ function App() {
 
         {/* Footer */}
         <footer>
-          <strong>SafeRide</strong>
+          <strong>Rabiul Islam Bipul</strong>
           <span>Emergency information</span>
         </footer>
       </main>
