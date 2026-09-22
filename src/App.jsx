@@ -33,13 +33,6 @@ function App() {
         phone: "+880 1875754831",
       },
     ],
-
-    medical: {
-      allergies: "None known",
-      conditions: "None known",
-      medications: "None",
-    },
-
     note: "If I am unable to communicate, please contact my family immediately.",
   };
 
