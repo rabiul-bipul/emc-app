@@ -47,7 +47,7 @@ function App() {
 
         <div className="avatar" style={{ padding: 0, overflow: "hidden" }}>
           <img
-            src="/01852558135.jpg"
+            src="/pp.jpg"
             alt={person.name}
             style={{
               width: "100%",
