@@ -1,6 +1,24 @@
+import { useEffect, useState } from "react";
 import "./index.css";
 
 function App() {
+  const [isDark, setIsDark] = useState(() => {
+    const hour = new Date().getHours();
+    return hour >= 19 || hour < 7;
+  });
+
+  useEffect(() => {
+    const updateThemeByTime = () => {
+      const hour = new Date().getHours();
+      setIsDark(hour >= 19 || hour < 7);
+    };
+
+    updateThemeByTime();
+    const intervalId = setInterval(updateThemeByTime, 60000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   const person = {
     name: "Rabiul Islam Bipul",
     bloodGroup: "A+",
@@ -37,7 +55,7 @@ function App() {
   };
 
   return (
-    <div className="page">
+    <div className={`page ${isDark ? "theme-dark" : ""}`}>
       {/* Header */}
       <header className="hero">
         <div className="badge">
