@@ -3,7 +3,7 @@ import "./index.css";
 
 function App() {
   const [language, setLanguage] = useState(
-    () => window.localStorage.getItem("emc-language") || "en",
+    () => window.localStorage.getItem("emc-language") || "bn",
   );
   const [isDark, setIsDark] = useState(() => {
     const hour = new Date().getHours();

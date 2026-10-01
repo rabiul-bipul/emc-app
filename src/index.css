@@ -79,50 +79,7 @@ a {
   min-height: 100vh;
   background: var(--page-bg);
   color: var(--text);
-}
-
-.page[lang="bn"] {
-  font-family: "Hind Siliguri", "Manrope", sans-serif;
-}
-
-.page[lang="bn"] .badge,
-.page[lang="bn"] .label {
-  letter-spacing: normal;
-}
-
-.page[lang="bn"] .badge {
-  font-size: 12px;
-}
-
-.page[lang="bn"] .label,
-.page[lang="bn"] .section-title p,
-.page[lang="bn"] .contact-details span {
-  font-size: 12px;
-}
-
-.page[lang="bn"] .label {
-  font-weight: 600;
-}
-
-.page[lang="bn"] .section-title h2,
-.page[lang="bn"] .info-box strong,
-.page[lang="bn"] .contact-details strong,
-.page[lang="bn"] .warning h3 {
-  font-weight: 700;
-}
-
-.page[lang="bn"] .hero p {
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.page[lang="bn"] .warning p {
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-.page[lang="bn"] footer span {
-  font-size: 11px;
+  font-family: "Manrope", "Hind Siliguri", sans-serif;
 }
 
 /* =========================
