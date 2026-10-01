@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@200..800&display=swap");
 
 * {
   margin: 0;
@@ -79,6 +79,50 @@ a {
   min-height: 100vh;
   background: var(--page-bg);
   color: var(--text);
+}
+
+.page[lang="bn"] {
+  font-family: "Hind Siliguri", "Manrope", sans-serif;
+}
+
+.page[lang="bn"] .badge,
+.page[lang="bn"] .label {
+  letter-spacing: normal;
+}
+
+.page[lang="bn"] .badge {
+  font-size: 12px;
+}
+
+.page[lang="bn"] .label,
+.page[lang="bn"] .section-title p,
+.page[lang="bn"] .contact-details span {
+  font-size: 12px;
+}
+
+.page[lang="bn"] .label {
+  font-weight: 600;
+}
+
+.page[lang="bn"] .section-title h2,
+.page[lang="bn"] .info-box strong,
+.page[lang="bn"] .contact-details strong,
+.page[lang="bn"] .warning h3 {
+  font-weight: 700;
+}
+
+.page[lang="bn"] .hero p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.page[lang="bn"] .warning p {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.page[lang="bn"] footer span {
+  font-size: 11px;
 }
 
 /* =========================
@@ -196,6 +240,41 @@ a {
 
 .theme-toggle:hover {
   background: rgba(255, 255, 255, 0.14);
+}
+
+.language-toggle {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 16px;
+
+  min-width: 74px;
+  padding: 8px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.language-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.language-toggle:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
 
 .badge {
@@ -692,7 +771,7 @@ footer span {
 
 @media (min-width: 600px) {
   .hero {
-    padding-top: 55px;
+    padding-top: 66px;
     padding-bottom: 80px;
   }
 
@@ -711,7 +790,7 @@ footer span {
 
 @media (max-width: 600px) {
   .hero {
-    padding-top: 30px;
+    padding-top: 62px;
     padding-bottom: 60px;
   }
 

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import "./index.css";
 
 function App() {
+  const [language, setLanguage] = useState(
+    () => window.localStorage.getItem("emc-language") || "en",
+  );
   const [isDark, setIsDark] = useState(() => {
     const hour = new Date().getHours();
     return hour >= 19 || hour < 7;
@@ -18,6 +21,11 @@ function App() {
 
     return () => clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("emc-language", language);
+    document.documentElement.lang = language;
+  }, [language]);
 
   const person = {
     name: "Rabiul Islam Bipul",
@@ -54,13 +62,77 @@ function App() {
     note: "If I am unable to communicate, please contact my family immediately.",
   };
 
+  const text = {
+    en: {
+      badge: "EMERGENCY INFORMATION",
+      intro: "If you found this page, I may need help.",
+      introFollowup: "Please contact me or my family.",
+      bloodGroup: "Blood Group",
+      phone: "Phone",
+      contactMe: "Contact Me",
+      callFirst: "Try calling me first",
+      callMe: "Call Me",
+      emergencyContacts: "Emergency Contacts",
+      contactFamily: "Please contact my family",
+      relations: {
+        Father: "Father",
+        Mother: "Mother",
+        Sister: "Sister",
+        Aunty: "Aunty",
+        Friend: "Friend",
+        Brother: "Brother",
+      },
+      important: "Important",
+      note: person.note,
+      footer: "Emergency information",
+      callContact: (name) => `Call ${name}`,
+      languageButton: "বাংলা",
+      languageLabel: "Switch language to Bangla",
+    },
+    bn: {
+      badge: "জরুরি তথ্য",
+      intro: "আপনি এই পৃষ্ঠাটি পেয়ে থাকলে, আমার সাহায্যের প্রয়োজন হতে পারে।",
+      introFollowup: "দয়া করে আমাকে অথবা আমার পরিবারের সঙ্গে যোগাযোগ করুন।",
+      bloodGroup: "রক্তের গ্রুপ",
+      phone: "ফোন",
+      contactMe: "আমার সঙ্গে যোগাযোগ করুন",
+      callFirst: "প্রথমে আমাকে ফোন করার চেষ্টা করুন",
+      callMe: "আমাকে ফোন করুন",
+      emergencyContacts: "জরুরি যোগাযোগ",
+      contactFamily: "দয়া করে আমার পরিবারের সঙ্গে যোগাযোগ করুন",
+      relations: {
+        Father: "বাবা",
+        Mother: "মা",
+        Sister: "বোন",
+        Aunty: "খালা",
+        Friend: "বন্ধু",
+        Brother: "ভাই",
+      },
+      important: "গুরুত্বপূর্ণ",
+      note: "আমি কথা বলতে না পারলে, দয়া করে অবিলম্বে আমার পরিবারের সঙ্গে যোগাযোগ করুন।",
+      footer: "জরুরি তথ্য",
+      callContact: (name) => `${name}-কে ফোন করুন`,
+      languageButton: "English",
+      languageLabel: "Switch language to English",
+    },
+  }[language];
+
   return (
-    <div className={`page ${isDark ? "theme-dark" : ""}`}>
+    <div className={`page ${isDark ? "theme-dark" : ""}`} lang={language}>
       {/* Header */}
       <header className="hero">
+        <button
+          className="language-toggle"
+          type="button"
+          onClick={() => setLanguage(language === "en" ? "bn" : "en")}
+          aria-label={text.languageLabel}
+        >
+          {text.languageButton}
+        </button>
+
         <div className="badge">
           <span className="badge-dot"></span>
-          EMERGENCY INFORMATION
+          {text.badge}
         </div>
 
         <div className="avatar" style={{ padding: 0, overflow: "hidden" }}>
@@ -80,9 +152,9 @@ function App() {
         <h1>{person.name}</h1>
 
         <p>
-          If you found this page, I may need help.
+          {text.intro}
           <br />
-          Please contact me or my family.
+          {text.introFollowup}
         </p>
       </header>
 
@@ -93,7 +165,7 @@ function App() {
             <span className="icon">
               <img src="/blood-type-a.png" />
             </span>
-            <span className="label">Blood Group</span>
+            <span className="label">{text.bloodGroup}</span>
             <strong>{person.bloodGroup}</strong>
           </div>
 
@@ -101,7 +173,7 @@ function App() {
             <span className="icon">
               <img src="/mobileb.png" />
             </span>
-            <span className="label">Phone</span>
+            <span className="label">{text.phone}</span>
             <strong>{person.phone}</strong>
           </div>
         </section>
@@ -112,13 +184,13 @@ function App() {
             <div className="title-icon">📱</div>
 
             <div>
-              <h2>Contact Me</h2>
-              <p>Try calling me first</p>
+              <h2>{text.contactMe}</h2>
+              <p>{text.callFirst}</p>
             </div>
           </div>
 
           <a href={`tel:${person.phone}`} className="main-call">
-            📞 Call Me
+            📞 {text.callMe}
           </a>
         </section>
 
@@ -130,8 +202,8 @@ function App() {
             </div>
 
             <div>
-              <h2>Emergency Contacts</h2>
-              <p>Please contact my family</p>
+              <h2>{text.emergencyContacts}</h2>
+              <p>{text.contactFamily}</p>
             </div>
           </div>
 
@@ -151,14 +223,14 @@ function App() {
 
                 <div className="contact-details">
                   <strong>{contact.name}</strong>
-                  <span>{contact.relation}</span>
+                  <span>{text.relations[contact.relation]}</span>
                   <small>{contact.phone}</small>
                 </div>
 
                 <a
                   href={`tel:${contact.phone}`}
                   className="call-button"
-                  aria-label={`Call ${contact.name}`}
+                  aria-label={text.callContact(contact.name)}
                 >
                   <img src="/mobile.png" />
                 </a>
@@ -172,15 +244,15 @@ function App() {
           <div className="warning-icon">⚠️</div>
 
           <div>
-            <h3>Important</h3>
-            <p>{person.note}</p>
+            <h3>{text.important}</h3>
+            <p>{text.note}</p>
           </div>
         </section>
 
         {/* Footer */}
         <footer>
           <strong>Rabiul Islam Bipul</strong>
-          <span>Emergency information</span>
+          <span>{text.footer}</span>
         </footer>
       </main>
     </div>
